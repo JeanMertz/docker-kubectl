@@ -13,12 +13,14 @@ all: download build push
 download:
 	curl -O https://storage.googleapis.com/kubernetes-release/release/v$(KUBECTL_VERSION)/bin/linux/amd64/kubectl
 
-build:
+build: download
 	chmod +x kubectl
 	docker build -t jeanmertz/kubectl:$(VERSION) .
+	docker tag jeanmertz/kubectl:$(VERSION) jeanmertz/kubectl:latest
 
 push:
 	docker push jeanmertz/kubectl:$(VERSION)
+	docker push jeanmertz/kubectl:latest
 
 clean:
 	rm -f kubectl
