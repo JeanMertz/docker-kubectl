@@ -5,7 +5,7 @@
 #   make push     - push container to Docker registry.
 #   make clean    - clean local artifacts.
 #
-KUBECTL_VERSION := 1.2.2
+KUBECTL_VERSION := 1.3.5
 VERSION = $(shell git rev-parse --short HEAD)
 
 all: download build push
